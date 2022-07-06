@@ -1,0 +1,17 @@
+.ContentWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+  .contentSidebar{
+    margin: 3%;
+    overflow: auto;
+  
+  }
+  .Content{
+
+    width: 70%;
+  }
+  .footer{
+    width: 100%;
+  }

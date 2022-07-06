@@ -1,0 +1,16 @@
+.footer{
+    background-color: #f8f8f8;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.footer-left{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.footer-item{
+    margin-right: 35px;
+}

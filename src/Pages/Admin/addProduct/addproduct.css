@@ -1,0 +1,28 @@
+.add-btn{
+    width: 180px;
+    background-color: #b5f5be;
+    border-radius: 20px;
+    height: 35px;
+}
+.place-product{
+    border: 1px solid #b5f5be;
+    border-radius: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
+    height: 30px;
+    margin: 5px;
+}
+.form-grid{
+    display: grid;
+}
+.btn-grid{
+    display: grid;
+    justify-content: center;
+}
+.product{
+    width: 80%;
+    margin: auto;
+}
+.prod-cont{
+    width: 100%;
+}
