@@ -6,7 +6,7 @@ import {Routes,Route} from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Modal from './Component/Auth/Re-auth/Modal';
 import { useSelector } from 'react-redux';
-import AddProduct from './Pages/Admin/addProduct/AddProduct';
+import AddProduct from './Pages/Admin/Products/addProducts/AddProduct';
 import Admin from './Pages/Admin/Admin';
 
 //Pages& Component

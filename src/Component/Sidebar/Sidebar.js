@@ -13,9 +13,9 @@ return(
         </div> 
         <div className='range'>
             <span>Price</span>
-            <input type="range" className='rangeSlider' min="10" max="100" value={isRange}  onChange={(event) => setisRange(event.target.value)} ></input>
+            <input type="range" className='rangeSlider' min="10" max="1000" value={isRange}  onChange={(event) => setisRange(event.target.value)} ></input>
             <span>$10</span>
-            <span>$100</span> 
+            <span>$1000</span> 
         </div>  
         <div className='range'>
             <span>Price Sort</span>

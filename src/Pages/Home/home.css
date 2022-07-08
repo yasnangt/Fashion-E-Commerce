@@ -1,7 +1,6 @@
 .ContentWrapper{
-    display: flex;
-    flex-wrap: wrap;
-    
+    justify-content: center;
+    width: 100%;
   }
   .contentSidebar{
     margin: 3%;
@@ -13,5 +12,28 @@
     width: 70%;
   }
   .footer{
+    width: 100%;
+  }
+  .banner-Container{
+    background-color: #feffcb;
+   display: flex;
+    padding: 40px;
+  
+  }
+  .slide-container{
+      padding: 50px 0;
+      background-color: #feffcb;
+  }
+  .bammer{
+    background-color: #feffcb;
+  }
+  .prod{
+    display: flex;
+    background-color: #ffcbd9;
+    padding: 20px 30px ;
+    height: 600px;
+    align-items: center;
+  }
+  .prod-home-container{
     width: 100%;
   }

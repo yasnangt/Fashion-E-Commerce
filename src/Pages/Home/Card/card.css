@@ -1,0 +1,9 @@
+.banner-main{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.banner1{
+    margin: 5px;
+    width: 49%;
+}

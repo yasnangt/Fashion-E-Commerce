@@ -4,8 +4,11 @@ export default function Footer(){
 
     return(
         <footer>
+            <div className='footer-container'>
+
+            
             <div className='footer'>
-                <div className='footer-container'>
+                <div >
                     <div className='footer-left'>
                         <div className='footer-item'>
                             <ol> <h1>LOGO</h1>
@@ -35,7 +38,7 @@ export default function Footer(){
 
 
             </div>
-
+            </div>
 
         </footer>
     );

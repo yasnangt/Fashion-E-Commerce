@@ -12,15 +12,14 @@ export default function Admin(){
         <>
            <Header/>
            <div className='ContentWrapper'>
-                    <div className='contentSidebar'>
-                        <Sidebar/>
-                    </div>
-                    <div className='Content' id='App'>
-                        <Product/>
-                    </div>
-                    <footer className='footer'>
-                        <Footer/>
-                    </footer>
+                <div>
+                    Gün Gün Gelir<br/>
+                    haftalık- aylık- günlük para miktarı<br/>
+                    Satılan ürün bilgileri
+                </div>
+                <footer className='footer'>
+                    <Footer/>
+                </footer>
             </div>
         </>
     )

@@ -4,7 +4,7 @@ import { useContext  } from 'react'
 import Context from '../../Component/Context/Context';
 //Icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch,faSliders, faUserGear, faUser,faUserPlus, faRightFromBracket,faCartShopping,faHeart}  from '@fortawesome/free-solid-svg-icons';
+import { faSearch,faSliders, faTags, faUser,faUserPlus, faRightFromBracket,faCartShopping,faHeart}  from '@fortawesome/free-solid-svg-icons';
 //Component
 import Language from '../../Component/Language/Language';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
@@ -29,61 +29,175 @@ export default function Header(){
     if(user.uid ==="r5mhSX6lUFgrh1f7pSAYHhOdtdm2" || user.uid === "gx2fv5NSZHX81Ts0WCbljjwnWrm2" ) {
         return (
         <>  
-            <div className="Nav-Container" >
-                <div className='col-left-logo' > <a href='/admin'> <h1> LOGO </h1></a> </div> {/* logo will be put here*/}
-                <div className='col-center-search'>
-                    <input className='search-box' placeholder='Search' type="text" onChange={e => setSearch(e.target.value)}></input>
-                    <button className='search-btn'><span><FontAwesomeIcon icon={ faSearch } /> </span>  </button>
-                
+           <div className='header-container'>
+                    <header>
+                        <div className='header-top'>
+                            <div className='header-top-left'>
+                                <a className='header-logo'>LOGO</a>
+                            </div>
+                            <div className='header-top-center'>
+                                <form autoComplete='off' className='search-container'>
+                                    <div className='search-form'>
+                                        <div className='search-form_input-field--first-wrap search-form__input-field'>
+                                            <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input'/>
+                                        </div>
+                                        <div className='search-form__input-field search-form_input-field--second-wrap '>
+                                            <button className='search-form-btn-search'>ARA</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div className='header-top-right'>
+                                <div className='header-section'>
+                                    <span>
+                                        <div className='top-right'>
+                                        <FontAwesomeIcon icon={faUser}/><a className='right-text'> <span>{user.displayName}</span></a>
+                                        </div>
+                                    </span>
+                                    <div className='top-right'>
+                                        <FontAwesomeIcon icon={faRightFromBracket}/> <a className='right-text' onClick={handleLogout}><span> Logout</span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-category'>
+                            <nav className='menu-nav'>
+                                <ul className='menu-nav-lists '>
+                                    <a href='admin'><li className='menu-item '>Dashboard</li></a>
+                                    <a href='admin-add-product'><li className='menu-item'> Ürünler</li></a>
+                                    <a><li className='menu-item'> Sayfa Yönetimi</li></a>
+                                    <a><li className='menu-item'> Gelir Takibi</li></a>
+                                    <a><li className='menu-item'>Yönetim </li></a>
+                                    <a><li className='menu-item'>Destek</li></a>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </header>
                 </div>
-            
-                <div className='col-right-bar'>
-                    <Language/>
-                    <a className='a-decoration' href='/admin-add-product' > <FontAwesomeIcon  icon={ faSliders } /> Ürün Ekleme </a>
-                    <a className='a-decoration' href='/admin' > <FontAwesomeIcon  icon={ faUserGear }  />{user.displayName} </a>
-                    <a className='a-decoration' href='#' onClick={handleLogout} > <FontAwesomeIcon  icon={ faRightFromBracket } /> Çıkış Yap</a>
-                </div>
-            </div>
+         
         </>
         ) 
     }
     else{
     if(user){
         return(
-            <div className="Nav-Container" >
-                <div className='col-left-logo' > <a href='/'> <h1> LOGO </h1></a> </div> {/* logo will be put here*/}
-                <div className='col-center-search'>
-                    <input className='search-box' placeholder='Search' type="text" onChange={e => setSearch(e.target.value)}></input>
-                    <button className='search-btn'><span> <FontAwesomeIcon icon={ faSearch } /> </span>  </button>
-                
+            <>
+                <div className='header-container'>
+                    <header>
+                        <div className='header-top'>
+                            <div className='header-top-left'>
+                                <a className='header-logo'>LOGO</a>
+                            </div>
+                            <div className='header-top-center'>
+                                <form autoComplete='off' className='search-container'>
+                                    <div className='search-form'>
+                                        <div className='search-form_input-field--first-wrap search-form__input-field'>
+                                            <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input'/>
+                                        </div>
+                                        <div className='search-form__input-field search-form_input-field--second-wrap '>
+                                            <button className='search-form-btn-search'>ARA</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div className='header-top-right'>
+                                <div className='header-section'>
+                                    <span>
+                                        <div className='top-right'>
+                                        <FontAwesomeIcon icon={faUser}/><a className='right-text'> <span>{user.displayName}</span></a>
+                                        </div>
+                                    </span>
+                                    <div className='top-right'> 
+                                        <FontAwesomeIcon icon={faHeart}/> <a className='right-text'> <span > Favoriler</span></a>
+                                    </div>
+                                    <div className='top-right'>
+                                       <a><FontAwesomeIcon icon={faCartShopping}/></a>  <a className='right-text'><span> Sepetim</span></a>
+                                    </div>
+                                    <div className='top-right'>
+                                        <FontAwesomeIcon icon={faRightFromBracket}/> <a className='right-text' onClick={handleLogout}><span> Logout</span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-category'>
+                            <nav className='menu-nav'>
+                                <ul className='menu-nav-lists '>
+                                    <li className='menu-item '>Kıyafet</li>
+                                    <li className='menu-item'>Ayakkabı</li>
+                                    <li className='menu-item'>Aksesuar</li>
+                                    <li className='menu-item'>Çanta</li>
+                                    <li className='menu-item'>Tablo</li>
+                                    <li className='menu-item'>Gözlük</li>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </header>
                 </div>
-            
-                <div className='col-right-bar'>
-                    <Language/>
-                    <a className='a-decoration' href='#'> <FontAwesomeIcon  icon={ faHeart }  />Favoriler </a>
-                    <a className='a-decoration' href='#'> <FontAwesomeIcon  icon={ faCartShopping }  />0 </a>
-                    <a className='a-decoration' href='#' onClick={() => setPop(true)} > <FontAwesomeIcon  icon={ faUser }  /> {user.displayName} </a>
-                    <a className='a-decoration' href='#' onClick={handleLogout} > <FontAwesomeIcon  icon={ faRightFromBracket } /> Çıkış Yap</a>
-                </div>
-            </div>
+            </>
         )
     }
     else{
         return(
-            <div className="Nav-Container" >
-                <div className='col-left-logo' > <a href='/'> <h1> LOGO </h1></a> </div> {/* logo will be put here*/}
-                <div className='col-center-search'>
-                    <input className='search-box' placeholder='Search' type="text" onChange={e => setSearch(e.target.value)}></input>
-                    <button className='search-btn'><span><FontAwesomeIcon icon={ faSearch } /> </span>  </button>
-                
+            <>
+                <div className='header-container'>
+                    <header>
+                        <div className='header-top'>
+                            <div className='header-top-left'>
+                                <a className='header-logo'>LOGO</a>
+                            </div>
+                            <div className='header-top-center'>
+                                <form autoComplete='off' className='search-container'>
+                                    <div className='search-form'>
+                                        <div className='search-form_input-field--first-wrap search-form__input-field'>
+                                            <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input' onChange={e => setSearch(e.target.value)}/>
+                                        </div>
+                                        <div className='search-form__input-field search-form_input-field--second-wrap '>
+                                            <button className='search-form-btn-search'>ARA</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div className='header-top-right'>
+                                <div className='header-section'>
+                                    <div className='top-right'>
+                                        <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setLogin(true)}> <span>Giriş Yap</span></a>
+                                    </div>
+                                    <div className='top-right'>
+                                        <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setLogin(true)}> <span>Kayıt Ol</span></a>
+                                    </div>
+                                    <div className='top-right'> 
+                                        <FontAwesomeIcon icon={faHeart}/> <a className='right-text'> <span > Favoriler</span></a>
+                                    </div>
+                                    <div className='top-right'>
+                                        <FontAwesomeIcon icon={faCartShopping}/> <a className='right-text'><span> Sepetim</span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-category'>
+                            <nav className='menu-nav'>
+                                <ul className='menu-nav-lists '>
+                                    <li className='menu-item '>Kıyafet</li>
+                                    <li className='menu-item'>Ayakkabı</li>
+                                    <li className='menu-item'>Aksesuar</li>
+                                    <li className='menu-item'>Çanta</li>
+                                    <li className='menu-item'>Tablo</li>
+                                    <li className='menu-item'>Gözlük</li>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </header>
                 </div>
-            
-                <div className='col-right-bar'>
-                    <Language/>
-                    <a className='a-decoration' href='#' onClick={() => setLogin(true)} > <FontAwesomeIcon  icon={ faUser }  /> Giriş Yap </a>
-                    <a className='a-decoration' href='#' onClick={() => setPop(true) } > <FontAwesomeIcon  icon={ faUserPlus } /> Kayıt Ol</a>
-                </div>
-            </div>
+            </>
         )
     }
 }

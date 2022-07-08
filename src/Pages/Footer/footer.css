@@ -1,8 +1,8 @@
 .footer{
     background-color: #f8f8f8;
-    position: relative;
-    bottom: 0;
+  
     width: 100%;
+
 }
 .footer-left{
     display: flex;
@@ -14,3 +14,7 @@
 .footer-item{
     margin-right: 35px;
 }
+.footer-container{
+    position: relative;
+}
+

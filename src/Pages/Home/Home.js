@@ -9,6 +9,9 @@ import Product from '../../Component/Product/product';
 import Sidebar from '../../Component/Sidebar/Sidebar';
 import Footer from '../Footer/Footer';
 import Admin from '../Admin/Admin';
+import Slide from '../ProductSlide/Slide';
+import Card from './Card/card';
+import ProdSlide from '../ProductSlide/Product/prodSlide';
 
 export default function Home(){
     const { login, pop, setPop} = useContext(Context);
@@ -37,12 +40,22 @@ export default function Home(){
                 <Login trigger={login} />
                 <UpdateProfile pop={pop} />
                 <Header id={user.displayName} />
+                
+                
                 <div className='ContentWrapper'>
-                    <div className='contentSidebar'>
-                        <Sidebar/>
+                    <div className='slide-container'>
+                        <Slide/>
                     </div>
-                    <div className='Content' id='App'>
-                        <Product/>
+                    <div className='prod'>
+                        <div className='prod-home-container'>
+                        <ProdSlide/>
+                        </div>
+                    </div>
+                    
+                    <div className='bammer'>
+                    <div className='banner-Container'>
+                        <Card/>
+                    </div>
                     </div>
                     <footer className='footer'>
                         <Footer/>

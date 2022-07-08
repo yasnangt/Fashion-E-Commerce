@@ -98,12 +98,19 @@ export const emailVerification = async () => {
   })
   
 export const addTodo = async data => {
-  const result= await addDoc(collection(db,'todos'),data)
+  try {
+    const result= await addDoc(collection(db,'todos'),data)
+    toast.success("Ürün Başarıyla Eklendi")
+  } catch (error) {
+    toast.error(error.message)
+  }
+  
 
 }
 export const deleteProduct = async id => {
   try {
-    return await deleteDoc(doc(db, 'todos', id))
+    await deleteDoc(doc(db, 'todos', id))
+    toast.success("Ürün Başarıyla Silindi")
   } catch (error) {
     toast.error(error.message)
   }
