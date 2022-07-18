@@ -9,7 +9,8 @@
 
 ## Item Card
 
-- **_Image_**   
+- **_Image_**
+  1. **_LazyLoading_** 
 - **_Description_**
 - **_Price_**
 - **_Unique Id_**
