@@ -14,7 +14,7 @@ import { useNavigate} from 'react-router-dom'
 
 export default function Header(){
     
-    const { setLogin, setPop, setSearch} = useContext(Context);
+    const { setLogin, setPop, setSearch,login} = useContext(Context);
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user} = useSelector(state => state.auth)
@@ -127,7 +127,7 @@ export default function Header(){
                         <div className='header-category'>
                             <nav className='menu-nav'>
                                 <ul className='menu-nav-lists '>
-                                    <li className='menu-item '>Kıyafet</li>
+                                    <li onClick={() => navigate("/kiyafet")} className='menu-item '>Kıyafet</li>
                                     <li className='menu-item'>Ayakkabı</li>
                                     <li className='menu-item'>Aksesuar</li>
                                     <li className='menu-item'>Çanta</li>
@@ -170,7 +170,7 @@ export default function Header(){
                                         <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setLogin(true)}> <span>Giriş Yap</span></a>
                                     </div>
                                     <div className='top-right'>
-                                        <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setLogin(true)}> <span>Kayıt Ol</span></a>
+                                        <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setPop(true)}> <span>Kayıt Ol</span></a>
                                     </div>
                                     <div className='top-right'> 
                                         <FontAwesomeIcon icon={faHeart}/> <a className='right-text'> <span > Favoriler</span></a>
@@ -185,7 +185,7 @@ export default function Header(){
                         <div className='header-category'>
                             <nav className='menu-nav'>
                                 <ul className='menu-nav-lists '>
-                                    <li className='menu-item '>Kıyafet</li>
+                                    <li onClick={() => navigate("/kiyafet")} className='menu-item '>Kıyafet</li>
                                     <li className='menu-item'>Ayakkabı</li>
                                     <li className='menu-item'>Aksesuar</li>
                                     <li className='menu-item'>Çanta</li>

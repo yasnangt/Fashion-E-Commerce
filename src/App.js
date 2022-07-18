@@ -8,6 +8,8 @@ import Modal from './Component/Auth/Re-auth/Modal';
 import { useSelector } from 'react-redux';
 import AddProduct from './Pages/Admin/Products/addProducts/AddProduct';
 import Admin from './Pages/Admin/Admin';
+import Clothes from './Pages/Clothes/Clothes';
+import Cart from './Pages/ShoppingCart/Cart';
 
 //Pages& Component
 
@@ -37,7 +39,6 @@ function App() {
     setName
   }
   const {open, data} = useSelector(state => state.modal)
-  console.log(search);
   return (
     <>
     <Context.Provider value={datas}>
@@ -47,6 +48,8 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/admin' element={<Admin/>} />
         <Route path='/admin-add-product' element={<AddProduct/>} />
+        <Route path='/kiyafet' element={<Clothes/>} />
+        <Route path='/sepetim' element={<Cart/>} />
       </Routes>
       
 

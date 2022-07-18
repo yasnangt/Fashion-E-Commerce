@@ -8,22 +8,49 @@ export default function Sidebar(){
     
 return(
     <>
-        <div className={"filterHeader"}>
-           <span className='header'>REFINE BY</span>
-        </div> 
-        <div className='range'>
-            <span>Price</span>
-            <input type="range" className='rangeSlider' min="10" max="1000" value={isRange}  onChange={(event) => setisRange(event.target.value)} ></input>
-            <span>$10</span>
-            <span>$1000</span> 
-        </div>  
-        <div className='range'>
-            <span>Price Sort</span>
-            <select id="sort" name="sort" onChange={(event) => setisHigh(event.target.value)}>
-                <option value="low">Low to High</option>
-                <option value="high">High to Low</option>
-            </select>
-        </div>   
+    <div className="sidebar-container">
+        <div className="sidebar-filter-container">            
+            <div className={"filterHeader"}>
+                <h2 className="filterHeader-header">Filtreleme</h2>
+            </div>
+            <div className="filter-content-container">
+                <div className="filter-gender">
+                    <div className="filter-gender-header">
+                        <h2> Cinsiyet</h2>
+                    </div>
+                    <div>
+                        <select className="filter-gender-selection" id="sort" name="sort" onChange={(event) => setisHigh(event.target.value)}>
+                            <option value="kadin">Kadın</option>
+                            <option value="erkek">Erkek</option>
+                        </select>
+                    </div>            
+                </div>  
+                <div>
+                    <div className="filter-gender-header">
+                        <h2> Ürün Tip</h2>
+                    </div>
+                    <div>
+                        <select className="filter-gender-selection">
+                            <option>Gömlek</option>
+                            <option>Tshirt</option>
+                            <option>Pantolon</option>
+                        </select>
+                    </div>
+                </div>     
+                <div>
+                    <div className="filter-gender-header">
+                        <h2> Fiyat Filtreleme</h2>
+                    </div>
+                    <div>
+                        <select className="filter-gender-selection">
+                            <option>En Düşük Fiyat</option>
+                            <option>En Yüksek Fiyat</option>
+                        </select>
+                    </div>
+                </div>     
+            </div>   
+        </div>
+    </div>
    </>
 )
 

@@ -1,11 +1,11 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
+import {getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc,query,limit,orderBy } from 'firebase/firestore'
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, updatePassword, updateProfile,signOut, onAuthStateChanged} from "firebase/auth";
 import toast from "react-hot-toast";
 import store from './store'
 import {login as loginHandle, logout as logoutHandle} from './store/auth';
 import { openModal } from "./store/modal";
-import { setTodos } from "./store/todos";
+import { setTodos,setLimitTodos } from "./store/todos";
 import { memo } from "react";
 
 const firebaseConfig = {
@@ -121,5 +121,4 @@ onSnapshot(collection(db,"todos"), (doc) => {
    setTodos(doc.docs.reduce((todos,todo) => [...todos, {...todo.data(), id: todo.id}],[]))
   )
 })
-
 export default memo(app) 

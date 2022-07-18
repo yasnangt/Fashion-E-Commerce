@@ -9,9 +9,6 @@ export default function Modal ({name, data}){
     const closeModal = () => {
         setIsOpen(false)
     }
-    console.log(currentModal)
-    console.log(modals)
-    console.log(name)
     return(
         <>
              {/* {currentModal ? <currentModal.element /> : <div>no data</div>  } */}
