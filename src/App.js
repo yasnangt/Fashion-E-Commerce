@@ -1,6 +1,6 @@
 import './App.css';
 import Context from './Component/Context/Context'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import {Routes,Route} from 'react-router-dom';
 import Home from './Pages/Home/Home';
@@ -10,6 +10,7 @@ import AddProduct from './Pages/Admin/Products/addProducts/AddProduct';
 import Admin from './Pages/Admin/Admin';
 import Clothes from './Pages/Clothes/Clothes';
 import Cart from './Pages/ShoppingCart/Cart';
+import Favourite from './Pages/Favourite/Favourites';
 
 //Pages& Component
 
@@ -25,6 +26,7 @@ function App() {
   const [Remove, setRemove] = useState("") 
   const [search, setSearch] = useState("")
   const [name , setName] = useState("")
+  const [load , setLoad] = useState("")
 
   const datas = {
     isRange,    isHigh,
@@ -35,10 +37,11 @@ function App() {
     setRemove,  setOk,
     pop,        search,
     setPop,     setSearch,
-    name,
-    setName
+    name,       load,
+    setName,    setLoad
   }
   const {open, data} = useSelector(state => state.modal)
+  
   return (
     <>
     <Context.Provider value={datas}>
@@ -50,6 +53,7 @@ function App() {
         <Route path='/admin-add-product' element={<AddProduct/>} />
         <Route path='/kiyafet' element={<Clothes/>} />
         <Route path='/sepetim' element={<Cart/>} />
+        <Route path='/favoriler' element={<Favourite/>} />
       </Routes>
       
 

@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 import store from './store'
 import {login as loginHandle, logout as logoutHandle} from './store/auth';
 import { openModal } from "./store/modal";
-import { setTodos,setLimitTodos } from "./store/todos";
+import { setTodos } from "./store/todos";
+import { setInfinite } from "./store/infinite";
 import { memo } from "react";
 
 const firebaseConfig = {
@@ -97,28 +98,52 @@ export const emailVerification = async () => {
     }
   })
   
-export const addTodo = async data => {
-  try {
-    const result= await addDoc(collection(db,'todos'),data)
-    toast.success("Ürün Başarıyla Eklendi")
-  } catch (error) {
-    toast.error(error.message)
+  export const addTodo = async data => {
+    try {
+      const result= await addDoc(collection(db,'todos'),data)
+      toast.success("Ürün Başarıyla Eklendi")
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
-  
+  export const addFav = async data => {
+    try {
+      const result= await addDoc(collection(db,'favori'),data)
+      toast.success("Ürün Favorilere Eklendi")
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+  export const deleteFav = async id => {
+    try {
+      await deleteDoc(doc(db, 'favori', id))
+      toast.success("Ürün Favorilerde Kaldırıldı")
+    } catch (error) {
+      toast.error(error.message)
+    }
+    
+  }
+  export const deleteProduct = async id => {
+    try {
+      await deleteDoc(doc(db, 'todos', id))
+      toast.success("Ürün Başarıyla Silindi")
+    } catch (error) {
+      toast.error(error.message)
+    }
+    
+  }
+  onSnapshot(collection(db,"todos"), (doc) => {
+    store.dispatch(
+     setTodos(doc.docs.reduce((todos,todo) => [...todos, {...todo.data(), id: todo.id}],[]))
+    )
+  })
+  export const infinite = (limits) =>{
+    onSnapshot(query(collection(db,"todos"), limit(limits)) , (doc) => {
+      store.dispatch(
+       setTodos(doc.docs.reduce((todos,todo) => [...todos, {...todo.data(), id: todo.id}],[]))
+      )
+    })
+  }
 
-}
-export const deleteProduct = async id => {
-  try {
-    await deleteDoc(doc(db, 'todos', id))
-    toast.success("Ürün Başarıyla Silindi")
-  } catch (error) {
-    toast.error(error.message)
-  }
-  
-}
-onSnapshot(collection(db,"todos"), (doc) => {
-  store.dispatch(
-   setTodos(doc.docs.reduce((todos,todo) => [...todos, {...todo.data(), id: todo.id}],[]))
-  )
-})
+
 export default memo(app) 

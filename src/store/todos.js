@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     todos: [],
-    limitTodos:[]
 }
 
 const todos = createSlice({
@@ -10,9 +9,6 @@ const todos = createSlice({
     initialState,
     reducers:{
         setTodos: (state, action) => {
-            state.todos = action.payload
-        },
-        setLimitTodos:(state, action) => {
             state.todos = action.payload
         },
         appendTodo: (state,action) => {

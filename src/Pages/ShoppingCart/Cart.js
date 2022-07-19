@@ -1,16 +1,12 @@
 
-import { useState } from "react"
-import { useSelector } from "react-redux/es/hooks/useSelector"
-import Image from "../../Component/Lazyload/Lazyload"
-import Section from "../../Component/Lazyload/Section/section"
-
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export default function Cart(){
-
-
-    return(
+   
+        return(
         <>
          <h1>merhaba</h1>
+      
         </>
         
     )

@@ -112,7 +112,7 @@ export default function Header(){
                                         </div>
                                     </span>
                                     <div className='top-right'> 
-                                        <FontAwesomeIcon icon={faHeart}/> <a className='right-text'> <span > Favoriler</span></a>
+                                        <FontAwesomeIcon icon={faHeart}/> <a href='/favoriler' className='right-text'> <span > Favoriler</span></a>
                                     </div>
                                     <div className='top-right'>
                                        <a><FontAwesomeIcon icon={faCartShopping}/></a>  <a className='right-text'><span> Sepetim</span></a>
@@ -173,7 +173,7 @@ export default function Header(){
                                         <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setPop(true)}> <span>Kayıt Ol</span></a>
                                     </div>
                                     <div className='top-right'> 
-                                        <FontAwesomeIcon icon={faHeart}/> <a className='right-text'> <span > Favoriler</span></a>
+                                        <FontAwesomeIcon icon={faHeart}/> <a href='/favoriler' className='right-text'> <span > Favoriler</span></a>
                                     </div>
                                     <div className='top-right'>
                                         <FontAwesomeIcon icon={faCartShopping}/> <a className='right-text'><span> Sepetim</span></a>

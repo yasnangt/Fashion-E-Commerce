@@ -28,4 +28,10 @@
     height: 426px;
     flex-shrink: 0;
   }
-  
+  .loadmore-content{
+    width: 100%;
+    margin: 10px;
+  }
+  .clothes-product-content{
+    display: grid;
+  }
