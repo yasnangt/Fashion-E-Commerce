@@ -14,7 +14,7 @@ import { useNavigate} from 'react-router-dom'
 
 export default function Header(){
     
-    const { setLogin, setPop, setSearch,login} = useContext(Context);
+    const { setLogin, setPop, setSearch,pop} = useContext(Context);
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user} = useSelector(state => state.auth)
@@ -95,7 +95,7 @@ export default function Header(){
                                 <form autoComplete='off' className='search-container'>
                                     <div className='search-form'>
                                         <div className='search-form_input-field--first-wrap search-form__input-field'>
-                                            <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input'/>
+                                            <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input' onChange={e => setSearch(e.target.value)}/>
                                         </div>
                                         <div className='search-form__input-field search-form_input-field--second-wrap '>
                                             <button className='search-form-btn-search'>ARA</button>
@@ -112,7 +112,7 @@ export default function Header(){
                                         </div>
                                     </span>
                                     <div className='top-right'> 
-                                        <FontAwesomeIcon icon={faHeart}/> <a href='/favoriler' className='right-text'> <span > Favoriler</span></a>
+                                        <FontAwesomeIcon icon={faHeart}/> <a onClick={() => navigate("/favoriler")} className='right-text'> <span > Favoriler</span></a>
                                     </div>
                                     <div className='top-right'>
                                        <a><FontAwesomeIcon icon={faCartShopping}/></a>  <a className='right-text'><span> Sepetim</span></a>
@@ -128,11 +128,11 @@ export default function Header(){
                             <nav className='menu-nav'>
                                 <ul className='menu-nav-lists '>
                                     <li onClick={() => navigate("/kiyafet")} className='menu-item '>Kıyafet</li>
-                                    <li className='menu-item'>Ayakkabı</li>
-                                    <li className='menu-item'>Aksesuar</li>
-                                    <li className='menu-item'>Çanta</li>
-                                    <li className='menu-item'>Tablo</li>
-                                    <li className='menu-item'>Gözlük</li>
+                                    <li onClick={() => navigate("/ayakkabi")} className='menu-item'>Ayakkabı</li>
+                                    <li onClick={() => navigate("/aksesuar")} className='menu-item'>Aksesuar</li>
+                                    <li onClick={() => navigate("/canta")} className='menu-item'>Çanta</li>
+                                    <li onClick={() => navigate("/tablo")} className='menu-item'>Tablo</li>
+                                    <li onClick={() => navigate("/gozluk")} className='menu-item'>Gözlük</li>
                                 </ul>
                             </nav>
 
@@ -158,7 +158,7 @@ export default function Header(){
                                             <input type="text" placeholder='Ürün,kategori veya marka ara' className='search-form-input' onChange={e => setSearch(e.target.value)}/>
                                         </div>
                                         <div className='search-form__input-field search-form_input-field--second-wrap '>
-                                            <button className='search-form-btn-search'>ARA</button>
+                                            <button className='search-form-btn-search' >ARA</button>
                                         </div>
                                     </div>
 
@@ -186,11 +186,11 @@ export default function Header(){
                             <nav className='menu-nav'>
                                 <ul className='menu-nav-lists '>
                                     <li onClick={() => navigate("/kiyafet")} className='menu-item '>Kıyafet</li>
-                                    <li className='menu-item'>Ayakkabı</li>
-                                    <li className='menu-item'>Aksesuar</li>
-                                    <li className='menu-item'>Çanta</li>
-                                    <li className='menu-item'>Tablo</li>
-                                    <li className='menu-item'>Gözlük</li>
+                                    <li onClick={() => navigate("/ayakkabi")} className='menu-item'>Ayakkabı</li>
+                                    <li onClick={() => navigate("/aksesuar")} className='menu-item'>Aksesuar</li>
+                                    <li onClick={() => navigate("/canta")} className='menu-item'>Çanta</li>
+                                    <li onClick={() => navigate("/tablo")} className='menu-item'>Tablo</li>
+                                    <li onClick={() => navigate("/gozluk")} className='menu-item'>Gözlük</li>
                                 </ul>
                             </nav>
 

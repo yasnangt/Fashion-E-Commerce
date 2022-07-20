@@ -1,46 +1,38 @@
 import FavRoundedActive from "../../Component/FavComponent/favRoundedActive";
 import FavRounded from "../../Component/FavComponent/favRounded";
 import toast from "react-hot-toast";
-import React ,{ useState } from "react";
-import { addFav } from "../../Firebase";
+import React ,{ useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import Context from "../../Component/Context/Context";
+import { useNavigate} from 'react-router-dom'
 
-
-function FavouriteBtn  ({value=false, id}) {
+export default function FavouriteBtn  ({value=false, id}) {
     const [isFavourite, setIsFavourite] = useState(value)
     const{todos} = useSelector(state => state.todos)
-    const submitHandle = async e => {
-        e.preventDefault()
-        await addFav({
-           
-
-        })
-    }
+    const { setFav,fav} = useContext(Context);
+    const navigate = useNavigate()
+    console.log(fav)
     const invertFav = (event) => {
-        
-        console.log(isFavourite)
-        if(isFavourite=== false){
+        if(isFavourite === false){
+            setFav([...fav],id)
             setIsFavourite(true)
             toast('Favorilere eklendi')
-           
         }
         else{
             setIsFavourite(false)
-            toast('Favorilerden çıkardınız')
+            toast('Favorilerden çıkardınız')      
         }
     }
     
     return (
         <>
-        
-        
-        <button className='btn' type="button" onClick={invertFav}>
+        <button className='btn' type="button" onClick={invertFav }>
             {  
-            
-                (isFavourite) ? <FavRoundedActive/> : <FavRounded/>   
+            (isFavourite) ? <FavRoundedActive/> : <FavRounded/>   
             }
         </button>
         </>
     )
 }
-export default React.memo(FavouriteBtn)
+ 

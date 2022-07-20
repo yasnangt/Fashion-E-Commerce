@@ -1,0 +1,56 @@
+.clothes-product-card-container{
+
+ 
+}
+.clothes-product-card-description-container{
+    display: flex;
+    width: 100%;
+    
+}
+.clothes-product-card-description-sell{
+    display: grid;
+    grid-template-rows: 20% 20% 20%;
+    width: 100%;
+}
+.clothes-card-description{
+    border-bottom: 2px solid black;
+    width: 100%;
+    display: grid;
+    font-weight: 500;
+    padding: 20px 0px 0px 20px;
+    padding-left: 20px;
+}
+.clothes-card-price-description{
+    display: grid;
+    padding: 20px;
+    width: 100%;
+    border-bottom: 2px solid black;
+    
+   align-content: center;
+}
+.clothes-card-price-description p{
+    color: rgb(23, 23, 218);
+    font-size: 2em;
+}
+.product-card-photo-container{
+    padding: 20px;
+    display: grid;
+    width: 75%;
+    justify-content: center;
+    border-right: 2px solid black;
+}
+.card-price-basket{
+    display: grid;
+    justify-items: center;
+    align-content: center;
+}
+.card-price-basket-btn{
+    width: 50%;
+    background-color: rgb(63, 63, 223);
+    height: 55px;
+    color: white;
+    border-radius: 10px;
+}
+.clothes-card-description-title{
+    font-size: 1.2em;
+}

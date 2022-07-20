@@ -17,13 +17,21 @@ export default function AddProduct (){
     const [ pricetype, setPricetype ] = useState('')
     const [ photoURL, setPhotoURL] = useState('')
     const [ stock, setStock] = useState('')
+    const [ category, setCategory] = useState('kiyafet')
+    const [ gender, setGender] = useState('kadin')
    
-
     function dropdwn(){
         if(document.getElementById('admin-product').style.display === "none")
             document.getElementById('admin-product').style.display ="block"
         else{
             document.getElementById('admin-product').style.display ="none"
+        }
+    }
+    function subdropdwn(){
+        if(document.getElementById('admin-sidebar-bot-sub').style.display === "none")
+            document.getElementById('admin-sidebar-bot-sub').style.display ="block"
+        else{
+            document.getElementById('admin-sidebar-bot-sub').style.display ="none"
         }
     }
     function addProduct(){
@@ -32,6 +40,7 @@ export default function AddProduct (){
             document.getElementById('product-dropdown').style.display ="block"
             document.getElementById('delete').style.display ="none"
             document.getElementById('list').style.display = "none" 
+            document.getElementById('admin-sidebar-bot-sub').style.display ="none"
         }
         else{
         document.getElementById('product-dropdown').style.display ="none"
@@ -42,6 +51,7 @@ export default function AddProduct (){
             document.getElementById('product-dropdown').style.display ="none"
             document.getElementById('delete').style.display ="block"
             document.getElementById('list').style.display = "none" 
+            document.getElementById('admin-sidebar-bot-sub').style.display = "none" 
         }
             
         else{
@@ -62,6 +72,8 @@ export default function AddProduct (){
     const submitHandle = async e => {
         e.preventDefault()
         await addTodo({
+            category,
+            gender,
             title,
             barcode,
             price,
@@ -91,17 +103,37 @@ export default function AddProduct (){
                                 <button className='admin-sidebar-bot-btn' onClick={deleteProduct} >Ürün Silme</button>
                             </div> 
                             <div>
-                                <button className='admin-sidebar-bot-btn' onClick={listProduct} >Ürün İnceleme</button>
+                                <button className='admin-sidebar-bot-btn' onClick={subdropdwn} >Ürün İnceleme</button>
+                                <div id='admin-sidebar-bot-sub'>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Kıyafet</button>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Ayakkabı</button>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Aksesuar</button>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Çanta</button>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Tablo</button>
+                                    <button className='admin-sidebar-bot-sub-btn' onClick={listProduct} >Gözlük</button>
+                                </div>
                             </div> 
                         </div>
                     </div>
                     
                 </div>
-                <div className='product-wrapper'>
+                <div className='product-wrapper'>{/* ürün ekleme*/}
                     
                     <div id='product-dropdown'>
                         <form className='form-grid' onSubmit={submitHandle}>
                             <div >
+                                <select className="category-selection" id="sort" name="sort" onChange={(event) => setCategory(event.target.value)}>
+                                    <option className='category-option' value="kiyafet">Kıyafet</option>
+                                    <option className='category-option' value="ayakkabi">Ayakkabı</option>
+                                    <option className='category-option' value="aksesuar">Aksesuar</option>
+                                    <option className='category-option' value="canta">Çanta</option>
+                                    <option className='category-option' value="tablo">Tablo</option>
+                                    <option className='category-option' value="gozluk">Gözlük</option>
+                                </select>
+                                <select className="category-selection" id="sort" name="sort" onChange={(event) => setGender(event.target.value)}>
+                                    <option className='category-option' value="kadin">Kadın</option>
+                                    <option className='category-option' value="erkek">Erkek</option>                                                                       
+                                </select>
                                 <input className='place-product' placeholder='Title' onChange={e => setTitle(e.target.value)} /><br/>
                                 <input className='place-product' placeholder='Barcode Number' onChange={e => setBarcode(e.target.value)} /><br/>
                                 <input type="number" className='place-product' placeholder='Price ' onChange={e => setPrice(e.target.valueAsNumber)} /><br/>

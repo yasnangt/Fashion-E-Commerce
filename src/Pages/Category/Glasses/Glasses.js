@@ -1,26 +1,20 @@
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import './clothes.css'
-import Sidebar from "../../Component/Sidebar/Sidebar";
+import '../Clothes/clothes.css'
+import Sidebar from "../../../Component/Sidebar/Sidebar";
 import { useContext, useEffect, useState } from "react";
-import Login from "../../Component/Auth/Login/Login";
-import Context from "../../Component/Context/Context";
-import Section from "../../Component/Lazyload/Section/section";
-import FavouriteBtn  from "../Favourite/FavouriteBtn";
-import { infinite } from "../../Firebase";
+import Login from "../../../Component/Auth/Login/Login";
+import Context from "../../../Component/Context/Context";
+import Section from "../../../Component/Lazyload/Section/section";
+import FavouriteBtn  from "../../Favourite/FavouriteBtn";
 
-export default function Clothes(){
+export default function Glasses(){
     const{todos} = useSelector(state => state.todos)
-    const { login} = useContext(Context);
-    const[loading, setLoading] = useState(12)
-    useEffect(()=>{
-        infinite(loading)
+    const { login,setGenders, genders,isHigh} = useContext(Context);
+    useEffect(() =>{
+        setGenders("kadin")
     },[])
-    function loadmore(x){
-        infinite(loading+4)
-        setLoading(loading+4)
-    }
-    if(loading <= todos.length  ){   
+    if( isHigh === "low"  ){   
     return (
         <>
         <Login trigger={login} />
@@ -31,7 +25,13 @@ export default function Clothes(){
             </div>
             <div className="clothes-product-content">
             <div className="clothes-product-container">     
-                { [...todos].map((todo,index) => ( 
+                { [...todos]
+                .sort((a, b) => a.price - b.price)
+                .filter((item) =>{
+                    if(item.category === "gozluk" && item.gender === genders ) 
+                        return item
+                })
+                .map((todo,index) => ( 
                    
                     <div className="clothes-product-card" key={index} >
                     <div>
@@ -60,15 +60,10 @@ export default function Clothes(){
                 ))}
             </div>
                 <div className="loadmore-content">
-                    <button onClick={() => loadmore(5) }>load more</button>
+                    
                 </div>
             </div>
-            
-         
-
         </div>
-        
-        
         </>
     )
 }else{
@@ -82,7 +77,13 @@ export default function Clothes(){
             </div>
             <div className="clothes-product-content">
             <div className="clothes-product-container">     
-                { [...todos].map((todo,index) => ( 
+                { [...todos]
+                .sort((a, b) => b.price - a.price)
+                .filter((item) =>{
+                    if(item.category === "gozluk" && item.gender === genders )
+                        return item 
+                       } )
+                .map((todo,index) => ( 
                    
                     <div className="clothes-product-card" key={index} >
                     <div>
@@ -112,7 +113,7 @@ export default function Clothes(){
                 ))}
             </div>
                 <div className="loadmore-content">
-                     <button disabled onClick={() => loadmore(5) }>Tüm Ürünler Listelenmiştir</button>
+                    
                 </div>
             </div>
         </div>

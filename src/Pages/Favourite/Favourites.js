@@ -1,13 +1,27 @@
-
 import { useSelector } from "react-redux/es/exports";
+import { useContext } from "react";
+import Context from "../../Component/Context/Context";
+import { useNavigate } from "react-router-dom";
 
-export  default function Favourite (props) {
-    
-
+export  default function Favourite () {
+    const{todos} = useSelector(state => state.todos)
+    const {fav} = useContext(Context);
+    const navigate = useNavigate()
+    console.log(fav)
     return(
         <div>
             <div>
-                <h1> </h1>
+                {fav
+                .map((todo, index) => (
+                    <div>
+                        <p>{todo.title} </p>
+                       
+                    </div>
+                    
+                ))} 
+                 <button onClick={ () => navigate("/kiyafet")}>
+                        geri dön
+                    </button>
             </div>
 
         </div>
@@ -15,5 +29,5 @@ export  default function Favourite (props) {
 
     )
 
-
+ 
 }

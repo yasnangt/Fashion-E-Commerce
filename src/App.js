@@ -8,17 +8,23 @@ import Modal from './Component/Auth/Re-auth/Modal';
 import { useSelector } from 'react-redux';
 import AddProduct from './Pages/Admin/Products/addProducts/AddProduct';
 import Admin from './Pages/Admin/Admin';
-import Clothes from './Pages/Clothes/Clothes';
+import Clothes from './Pages/Category/Clothes/Clothes';
 import Cart from './Pages/ShoppingCart/Cart';
 import Favourite from './Pages/Favourite/Favourites';
+import Shoes from './Pages/Category/Shoes/Shoes'
+import Bag from './Pages/Category/Bag/Bag';
+import Accessory from './Pages/Category/Accessory/Acessory';
+import Table from './Pages/Category/Table/Table';
+import Glasses from './Pages/Category/Glasses/Glasses';
+import ClothesProduct from './Pages/Category/Clothes/clothesProduct';
 
 //Pages& Component
 
 
 function App() {
 
-  const [isRange, setisRange] = useState("100")
-  const [isHigh, setisHigh] = useState("low")
+  const [items, setItems] = useState("")
+  const [isHigh, setisHigh] = useState("")
   const [login, setLogin] = useState(false)
   const [pop, setPop] = useState(false)
   const [isRight, setisRight] =useState(false)
@@ -27,10 +33,12 @@ function App() {
   const [search, setSearch] = useState("")
   const [name , setName] = useState("")
   const [load , setLoad] = useState("")
+  const [genders , setGenders] = useState("kadin")
+  const [fav , setFav] = useState([])
 
   const datas = {
-    isRange,    isHigh,
-    setisRange, setisHigh,
+    items,      isHigh,
+    setItems,   setisHigh,
     login,      isRight,
     setLogin,   setisRight,
     Remove,     ok,
@@ -38,9 +46,12 @@ function App() {
     pop,        search,
     setPop,     setSearch,
     name,       load,
-    setName,    setLoad
+    setName,    setLoad,
+    genders,    fav,
+    setGenders, setFav      
   }
   const {open, data} = useSelector(state => state.modal)
+ 
   
   return (
     <>
@@ -54,6 +65,12 @@ function App() {
         <Route path='/kiyafet' element={<Clothes/>} />
         <Route path='/sepetim' element={<Cart/>} />
         <Route path='/favoriler' element={<Favourite/>} />
+        <Route path='/canta' element={<Bag/>} />
+        <Route path='/aksesuar' element={<Accessory/>} />
+        <Route path='/tablo' element={<Table/>} />
+        <Route path='/ayakkabi' element={<Shoes/>} />
+        <Route path='/gozluk' element={<Glasses/>} />
+        <Route path='/clothes-item' element={<ClothesProduct/>} />
       </Routes>
       
 

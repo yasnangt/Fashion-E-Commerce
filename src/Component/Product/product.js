@@ -1,120 +1,45 @@
-import './product.css'
-import { useState, useContext, useEffect, useCallback} from "react"
-import { useSelector } from "react-redux"
-import FavRounded from '../FavComponent/favRounded'
-import FavRoundedActive from '../FavComponent/favRoundedActive'
-import Context from '../Context/Context';
-import { setTodos } from '../../store/todos'
-import { faTrashCan,  } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { deleteProduct } from '../../Firebase'
+import { useContext } from "react";
+import Context from "../Context/Context";
+import { useNavigate } from "react-router-dom";
+import Section from "../Lazyload/Section/section";
 
-export default function Product(){
-    const { user} = useSelector(state => state.auth)
-    const { isRange, isHigh} = useContext(Context);
-    const{todos} = useSelector(state => state.todos)
-    const FavouriteBtn = ({value=false,}) => {
-        const [isFavourite, setIsFavourite] = useState(value)
-        const invertFav = (event) => {
-            setIsFavourite( !isFavourite )
-        }
-        return (
-            <button className='btn' type="button" onClick={invertFav}> {/* Çöp */}
-                {
-                    (isFavourite) ? <FavRoundedActive/> : <FavRounded/>   
-                }
-            </button>
-        )
+export default function Products ({product, bask, setBask}){
+    const {  setItems,setFav, fav} = useContext(Context);
+    const navigate = useNavigate()
+
+    function showItems(x){
+        setItems(x)
+        navigate("/clothes-item")
     }
-
-
- 
-        if(user){
-            return(
-                <div>  
-                    <div className="main-container" >
-                    { [...todos].sort((a, b) => a.price - b.price).filter((item) => {
-                if (item.price <= isRange) {
-                    return item;
-                }
-            })
-            .map((todo,index) => ( 
-         
-                            <div  key={index} className="product-container">
-                                <div className='fav-container'>
-                                    <div className='fav-btn'>
-                                        <FavouriteBtn/>
-                                    </div> 
-                                    <div className='barcode'>
-                                        <p>#{todo.barcode}</p>
-                                    </div>
-                                </div>
-                                <a>
-                                    <div className='imgContainer'>
-                                        <img className='imgDesign' src={todo.photoURL}/>
-                                    </div>
-                                </a>
-                                <div className='cart-container'> 
-                                    <div className='cardDescription'> 
-                                        <p><strong>{todo.title}</strong></p>
-                                        <p><strong>{todo.pricetype}{todo.price}</strong></p>
-                                        
-                                    </div>
-                                    <div className='cart'>
-                                    <button className='cart-btn'>Sepete Ekle</button>
-                                    <button className='cart-btn'>Ürünü İncele</button>
-                                    </div>
-                                </div>
-                            </div>
-                    ))}
-                    </div>  
-                </div>  
-        
-            )
-        }
-        else{
-            return(
-                <div>  
-                    <div className="main-container" >
-                    { [...todos].sort((a, b) => a.price - b.price).filter((item) => {
-                if (item.price <= isRange) {
-                    return item;
-                }
-            })
-            .map((todo,index) => ( 
-         
-                            <div  key={index} className="product-container">
-                                <div className='fav-container'>
-                                    <div className='fav-btn'>
-                                        <FavouriteBtn/>
-                                    </div> 
-                                    <div className='barcode'>
-                                        <p>#{todo.barcode}</p>
-                                    </div>
-                                </div>
-                                <a>
-                                    <div className='imgContainer'>
-                                        <img className='imgDesign' src={todo.photoURL}/>
-                                    </div>
-                                </a>
-                                <div className='cart-container'> 
-                                    <div className='cardDescription'> 
-                                        <p><strong>{todo.title}</strong></p>
-                                        <p><strong>{todo.pricetype}{todo.price}</strong></p>
-                                        
-                                    </div>
-                                    <div className='cart'>
-                                    <button className='cart-btn'>Sepete Ekle</button>
-                                    <button className='cart-btn'>Ürünü İncele</button>
-                                    </div>
-                                </div>
-                            </div>
-                    ))}
-                    </div>  
-                </div>  
-        
-            )
-        }
+    const basket = () => {
+        setFav([...fav, product])
+        navigate("/favoriler")
+    }
     
-
+    return (
+        <div className="clothes-product-card">
+            <div>
+                <div className='fav-container'>
+                    <div className='fav-btn'>
+                        <button onClick={basket}> Fav</button>
+                    </div> 
+                </div>
+                <a onClick={() => showItems(product.barcode)}>
+                    <div>  
+                        <Section src={product.photoURL}/>
+                    </div>
+                </a>
+                <div > 
+                    <div className="clothes-product-description"> 
+                        <div>
+                            <p><strong>{product.title}</strong></p>
+                        </div>                        
+                        <div>
+                            <h3 className="clothes-product-price"><strong>{product.pricetype}{product.price}</strong></h3> 
+                        </div>                            
+                    </div>
+                </div>    
+            </div>
+        </div>
+    )
 }

@@ -12,6 +12,7 @@ import Admin from '../Admin/Admin';
 import Slide from '../ProductSlide/Slide';
 import Card from './Card/card';
 import ProdSlide from '../ProductSlide/Product/prodSlide';
+import Signup from '../../Component/Auth/Signup/Signup'
 
 export default function Home(){
     const { login, pop, setPop} = useContext(Context);
@@ -38,7 +39,7 @@ export default function Home(){
             return(
                 <> 
                 <Login trigger={login} />
-                <UpdateProfile pop={pop} />
+                <Signup sign ={pop}/>
                 <Header id={user.displayName} />
                 
                 

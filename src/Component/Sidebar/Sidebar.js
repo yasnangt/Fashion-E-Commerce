@@ -4,7 +4,7 @@ import Context from "../Context/Context";
 import './sidebar.css';
 
 export default function Sidebar(){
-    const { isRange, setisRange ,setisHigh, Theme} = useContext(Context);
+    const { setGenders,setisHigh} = useContext(Context);
     
 return(
     <>
@@ -19,7 +19,7 @@ return(
                         <h2> Cinsiyet</h2>
                     </div>
                     <div>
-                        <select className="filter-gender-selection" id="sort" name="sort" onChange={(event) => setisHigh(event.target.value)}>
+                        <select className="filter-gender-selection" id="sort" name="sort" onClick={(event) => setGenders(event.target.value)}>
                             <option value="kadin">Kadın</option>
                             <option value="erkek">Erkek</option>
                         </select>
@@ -42,9 +42,9 @@ return(
                         <h2> Fiyat Filtreleme</h2>
                     </div>
                     <div>
-                        <select className="filter-gender-selection">
-                            <option>En Düşük Fiyat</option>
-                            <option>En Yüksek Fiyat</option>
+                        <select className="filter-gender-selection" onChange={(event) => setisHigh(event.target.value)}>
+                            <option value="low">En Düşük Fiyat</option>
+                            <option value="high">En Yüksek Fiyat</option>
                         </select>
                     </div>
                 </div>     

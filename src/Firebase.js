@@ -100,7 +100,7 @@ export const emailVerification = async () => {
   
   export const addTodo = async data => {
     try {
-      const result= await addDoc(collection(db,'todos'),data)
+      const result= await addDoc(collection(db,"todos"),data)
       toast.success("Ürün Başarıyla Eklendi")
     } catch (error) {
       toast.error(error.message)

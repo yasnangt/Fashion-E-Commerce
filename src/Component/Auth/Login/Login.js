@@ -21,11 +21,11 @@ export default function Login (props){
         if(user){
             setLogin(false)
         }
-       
+       navigate("/admin")
 
     }
 
-    return (props.trigger) ? (
+    return (props.trigger) ? ( 
        <div className='popup'>
         <div className='login-container'>
             <div className='login-exit'>
