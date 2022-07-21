@@ -9,36 +9,26 @@ import Section from "../../../Component/Lazyload/Section/section";
 import FavouriteBtn  from "../../Favourite/FavouriteBtn";
 import { useNavigate} from 'react-router-dom'   
 import Products from "../../../Component/Product/product";
+import Footer from "../../Footer/Footer";
+import Signup from "../../../Component/Auth/Signup/Signup";
     
 export default function Clothes(){
     const{todos} = useSelector(state => state.todos)
-    const { login, setGenders,genders,isHigh, setItems, items, search,setisHigh,setFav,fav} = useContext(Context);
+    const { login, setGenders,genders,isHigh, pop, search,setisHigh} = useContext(Context);
     const navigate = useNavigate()
     const [baskets, setBaskets] = useState([])
   
-    useEffect(() => {
-        console.log(fav)
-      },[fav])
-
     useEffect(() =>{
         setGenders("kadin")
         setisHigh("low")
     },[])
-    function showItems(x){
-        setItems(x)
-        navigate("/clothes-item")
-    }
-    const basket = () => {
-        setFav([...fav], todos)
-    }
-    
    
-
     if( isHigh === "low"  ){   
 
     return (
         <>
         <Login trigger={login} />
+        <Signup sign ={pop}/>
         <Header/>
         <div className="clothes-container">
             <div>
@@ -71,12 +61,14 @@ export default function Clothes(){
                 </div>
             </div>
         </div>
+        <Footer/>
         </>
     )
 }else{
     return (
         <>
-        <Login trigger={login} />
+       <Login trigger={login} />
+        <Signup sign ={pop}/>
         <Header/>
         <div className="clothes-container">
             <div>
@@ -109,7 +101,7 @@ export default function Clothes(){
                 </div>
             </div>
         </div>
-        
+        <Footer/>
         </>
         )
 }

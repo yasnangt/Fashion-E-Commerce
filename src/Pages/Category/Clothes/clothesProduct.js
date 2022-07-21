@@ -7,9 +7,10 @@ import Footer from "../../Footer/Footer";
 import toast from "react-hot-toast";
 
 export default function ClothesProduct(){
-    const {items} = useContext(Context);
+    const {items,setBuy,buy} = useContext(Context);
     const{todos} = useSelector(state => state.todos)
-    function basket(){
+    function basket(todo){
+        setBuy([...buy,todo])
         toast.success("Sepete Eklendi")
     }
     
@@ -43,7 +44,7 @@ export default function ClothesProduct(){
                                 <p>{todo.pricetype} {todo.price} </p> 
                             </div>
                             <div className="card-price-basket">
-                                <button onClick={() => basket()} className="card-price-basket-btn"> Sepete Ekle</button>
+                                <button onClick={() => basket(todo)} className="card-price-basket-btn"> Sepete Ekle</button>
                             </div>
                         </div>
                     </div>

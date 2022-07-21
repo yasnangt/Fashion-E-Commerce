@@ -5,14 +5,15 @@ import Sidebar from "../../../Component/Sidebar/Sidebar";
 import { useContext, useEffect, useState } from "react";
 import Login from "../../../Component/Auth/Login/Login";
 import Context from "../../../Component/Context/Context";
-import Section from "../../../Component/Lazyload/Section/section";
-import FavouriteBtn  from "../../Favourite/FavouriteBtn";
+import Products from "../../../Component/Product/product";
 
 export default function Glasses(){
     const{todos} = useSelector(state => state.todos)
-    const { login,setGenders, genders,isHigh} = useContext(Context);
+    const { login,setGenders, genders,isHigh,setisHigh} = useContext(Context);
+    const [baskets, setBaskets] = useState([])
     useEffect(() =>{
         setGenders("kadin")
+        setisHigh("low")
     },[])
     if( isHigh === "low"  ){   
     return (
@@ -33,30 +34,7 @@ export default function Glasses(){
                 })
                 .map((todo,index) => ( 
                    
-                    <div className="clothes-product-card" key={index} >
-                    <div>
-                        <div className='fav-container'>
-                            <div className='fav-btn'>
-                                <FavouriteBtn />
-                            </div> 
-                        </div>
-                    <a href="#t">
-                        <div>  
-                            <Section src={todo.photoURL}/>
-                        </div>
-                    </a>
-                    <div > 
-                        <div className="clothes-product-description"> 
-                            <div>
-                                <p><strong>{todo.title}</strong></p>
-                            </div>                        
-                            <div>
-                                <h3 className="clothes-product-price"><strong>{todo.pricetype}{todo.price}</strong></h3> 
-                            </div>                            
-                        </div>
-                    </div>    
-                    </div>
-                </div>
+                    <Products product={todo} bask={baskets} setBask={setBaskets} />
                 ))}
             </div>
                 <div className="loadmore-content">
@@ -85,31 +63,7 @@ export default function Glasses(){
                        } )
                 .map((todo,index) => ( 
                    
-                    <div className="clothes-product-card" key={index} >
-                    <div>
-                        <div className='fav-container'>
-                            <div className='fav-btn'>
-                                <FavouriteBtn />
-                            </div> 
-                        </div>
-                    <a href="#t">
-                        <div>  
-                            <Section src={todo.photoURL}/>
-                        </div>
-                    </a>
-                    <div > 
-                        <div className="clothes-product-description"> 
-                            <div>
-                                <p><strong>{todo.title}</strong></p>
-                            </div>                        
-                            <div>
-                                <h3 className="clothes-product-price"><strong>{todo.pricetype}{todo.price}</strong></h3> 
-                            </div>                            
-                        </div>
-                    </div>    
-                    </div>
-
-                </div>
+                    <Products product={todo} bask={baskets} setBask={setBaskets} />
                 ))}
             </div>
                 <div className="loadmore-content">

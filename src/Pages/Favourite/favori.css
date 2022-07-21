@@ -1,0 +1,40 @@
+.favourites-container{
+    display: grid;
+    overflow: hidden;
+    height: fit-content;
+    grid-template-areas:
+    'actions'
+    'items';
+    grid-template-columns: repeat(6, 1fr);
+}
+.favourites-back-btn{
+    background-color: #193db0;
+    color: white;
+    width: 180px;
+    height: 45px;
+    font-size: 1.2em;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.main-back-btn{
+    width: 220px;
+    margin: 20px;
+}
+.add-cart-btn{
+    background-color: #193db0;
+    color: white;
+    width: 180px;
+    height: 45px;
+    font-size: 1.2em;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.add-cart-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.favourites-empty{
+    margin: 40px 20px 20px 20px;
+}

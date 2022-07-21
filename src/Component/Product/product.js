@@ -2,6 +2,8 @@ import { useContext } from "react";
 import Context from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 import Section from "../Lazyload/Section/section";
+import toast from "react-hot-toast";
+import FavouriteBtn from "../../Pages/Favourite/FavouriteBtn";
 
 export default function Products ({product, bask, setBask}){
     const {  setItems,setFav, fav} = useContext(Context);
@@ -11,18 +13,14 @@ export default function Products ({product, bask, setBask}){
         setItems(x)
         navigate("/clothes-item")
     }
-    const basket = () => {
-        setFav([...fav, product])
-        navigate("/favoriler")
-    }
-    
     return (
         <div className="clothes-product-card">
             <div>
                 <div className='fav-container'>
-                    <div className='fav-btn'>
-                        <button onClick={basket}> Fav</button>
-                    </div> 
+                    <div className="fav-btn">
+                        <FavouriteBtn id={product}/>
+                    </div>
+                    
                 </div>
                 <a onClick={() => showItems(product.barcode)}>
                     <div>  

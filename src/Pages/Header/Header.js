@@ -12,6 +12,7 @@ import { logout } from '../../Firebase';
 import { logout as logoutHandle } from '../../store/auth';
 import { useNavigate} from 'react-router-dom'
 
+
 export default function Header(){
     
     const { setLogin, setPop, setSearch,pop} = useContext(Context);
@@ -85,6 +86,7 @@ export default function Header(){
     if(user){
         return(
             <>
+                
                 <div className='header-container'>
                     <header>
                         <div className='header-top'>
@@ -115,7 +117,7 @@ export default function Header(){
                                         <FontAwesomeIcon icon={faHeart}/> <a onClick={() => navigate("/favoriler")} className='right-text'> <span > Favoriler</span></a>
                                     </div>
                                     <div className='top-right'>
-                                       <a><FontAwesomeIcon icon={faCartShopping}/></a>  <a className='right-text'><span> Sepetim</span></a>
+                                       <a><FontAwesomeIcon icon={faCartShopping}/></a>  <a onClick={() => navigate("/sepetim")}className='right-text'><span> Sepetim</span></a>
                                     </div>
                                     <div className='top-right'>
                                         <FontAwesomeIcon icon={faRightFromBracket}/> <a className='right-text' onClick={handleLogout}><span> Logout</span></a>
@@ -144,7 +146,7 @@ export default function Header(){
     }
     else{
         return(
-            <>
+            <>  
                 <div className='header-container'>
                     <header>
                         <div className='header-top'>
@@ -170,13 +172,13 @@ export default function Header(){
                                         <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setLogin(true)}> <span>Giriş Yap</span></a>
                                     </div>
                                     <div className='top-right'>
-                                        <FontAwesomeIcon  icon={ faUser }/><a className='right-text' onClick={() => setPop(true)}> <span>Kayıt Ol</span></a>
+                                        <FontAwesomeIcon  icon={ faUserPlus }/><a className='right-text' onClick={() => setPop(true)}> <span>Kayıt Ol</span></a>
                                     </div>
                                     <div className='top-right'> 
-                                        <FontAwesomeIcon icon={faHeart}/> <a href='/favoriler' className='right-text'> <span > Favoriler</span></a>
+                                        <FontAwesomeIcon icon={faHeart}/> <a onClick={() => navigate("/favoriler")} className='right-text'> <span > Favoriler</span></a>
                                     </div>
                                     <div className='top-right'>
-                                        <FontAwesomeIcon icon={faCartShopping}/> <a className='right-text'><span> Sepetim</span></a>
+                                        <FontAwesomeIcon icon={faCartShopping}/> <a onClick={() => navigate("/sepetim")} className='right-text'><span> Sepetim</span></a>
                                     </div>
 
                                 </div>

@@ -12,10 +12,10 @@ export default function FavouriteBtn  ({value=false, id}) {
     const{todos} = useSelector(state => state.todos)
     const { setFav,fav} = useContext(Context);
     const navigate = useNavigate()
-    console.log(fav)
+  
     const invertFav = (event) => {
         if(isFavourite === false){
-            setFav([...fav],id)
+            setFav([...fav,id])
             setIsFavourite(true)
             toast('Favorilere eklendi')
         }

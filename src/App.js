@@ -17,6 +17,7 @@ import Accessory from './Pages/Category/Accessory/Acessory';
 import Table from './Pages/Category/Table/Table';
 import Glasses from './Pages/Category/Glasses/Glasses';
 import ClothesProduct from './Pages/Category/Clothes/clothesProduct';
+import Payment from './Pages/Paymenent/payment';
 
 //Pages& Component
 
@@ -35,6 +36,7 @@ function App() {
   const [load , setLoad] = useState("")
   const [genders , setGenders] = useState("kadin")
   const [fav , setFav] = useState([])
+  const [buy , setBuy] = useState([])
 
   const datas = {
     items,      isHigh,
@@ -48,7 +50,9 @@ function App() {
     name,       load,
     setName,    setLoad,
     genders,    fav,
-    setGenders, setFav      
+    setGenders, setFav,
+    buy, 
+    setBuy      
   }
   const {open, data} = useSelector(state => state.modal)
  
@@ -71,6 +75,8 @@ function App() {
         <Route path='/ayakkabi' element={<Shoes/>} />
         <Route path='/gozluk' element={<Glasses/>} />
         <Route path='/clothes-item' element={<ClothesProduct/>} />
+        <Route path='/sepetim' element={<Cart/>} />
+        <Route path='/odeme' element={<Payment/>} />
       </Routes>
       
 
